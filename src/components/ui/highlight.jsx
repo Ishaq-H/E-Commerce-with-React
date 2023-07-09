@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Highlight = (props) => {
   console.log(props);
   const { icon, para, title } = props;
@@ -8,6 +10,12 @@ const Highlight = (props) => {
       <p className="highlight__para">{title}</p>
     </div>
   );
+};
+
+Highlight.propTypes = {
+  icon: PropTypes.string.isRequired,
+  para: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Highlight;
