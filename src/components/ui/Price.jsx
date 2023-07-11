@@ -18,8 +18,8 @@ function Price({ originalPrice, salePrice }) {
 }
 
 Price.propTypes = {
-  originalPrice: PropTypes.string.isRequired,
-  salePrice: PropTypes.string.isRequired,
+  originalPrice: PropTypes.number.isRequired,
+  salePrice: PropTypes.number,
 };
 
 export default Price;
