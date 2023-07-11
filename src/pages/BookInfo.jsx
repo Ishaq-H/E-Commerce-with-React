@@ -5,15 +5,16 @@ import Price from "../components/ui/Price";
 import PropTypes from "prop-types";
 import Book from "../components/ui/Book";
 
-const BookInfo = ({ books }) => {
+const BookInfo = ({ books, addItemToCart }) => {
   const { id } = useParams();
   const book = books.find((book) => +book.id === +id);
+
   return (
     <div id="books__body">
       <main id="books__main">
         <div className="books__container">
           <div className="row">
-            <div className="books__selected--top">
+            <div className="book__selected--top">
               <Link to="/books" className="book__link">
                 <FontAwesomeIcon icon="arrow-left" />
               </Link>
@@ -23,7 +24,7 @@ const BookInfo = ({ books }) => {
             </div>
             <div className="book__selected">
               <figure className="book__selected--figure">
-                <img src={book.url} alt="" className="book__selected--ig" />
+                <img src={book.url} alt="" className="book__selected--img" />
               </figure>
               <div className="book__selected--description">
                 <h2 className="book__selected--title">{book.title}</h2>
@@ -49,7 +50,9 @@ const BookInfo = ({ books }) => {
                     Totam officiis esse hic.
                   </p>
                 </div>
-                <button className="btn">Add to cart</button>
+                <button className="btn" onClick={() => addItemToCart(book)}>
+                  Add to cart
+                </button>
               </div>
             </div>
           </div>
@@ -77,6 +80,7 @@ const BookInfo = ({ books }) => {
 
 BookInfo.propTypes = {
   books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  addItemToCart: PropTypes.func.isRequired,
 };
 
 export default BookInfo;
